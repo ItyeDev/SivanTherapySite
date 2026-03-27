@@ -1,0 +1,86 @@
+@font-face {
+    font-family: 'Anka';
+    src: url('fonts/anka/anka/ankaclm-bold-webfont.woff') format('woff'),
+         url('fonts/anka/anka/ankaclm-bold-webfont.ttf') format('truetype');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'ComixNo2';
+    src: url('fonts/comixno2/comixno2/comixno2clm_bold-webfont.woff') format('woff'),
+         url('fonts/comixno2/comixno2/comixno2clm_bold-webfont.ttf') format('truetype');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'ComixNo2';
+    src: url('fonts/comixno2/comixno2/comixno2clm_medium-webfont.woff') format('woff'),
+         url('fonts/comixno2/comixno2/comixno2clm_medium-webfont.ttf') format('truetype');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'DanaYad';
+    src: url('fonts/dana-yad-alefalefalef/DanaYadAlefAlefAlef-Normal.woff') format('woff'),
+         url('fonts/dana-yad-alefalefalef/DanaYadAlefAlefAlef-Normal.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Gan';
+    src: url('fonts/gan/gan/ganclm_bold-webfont.woff') format('woff'),
+         url('fonts/gan/gan/ganclm_bold-webfont.ttf') format('truetype');
+    font-weight: bold;
+}
+
+body {
+    font-family: 'Assistant', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.gradient-bg {
+    background: linear-gradient(180deg, #d8d2e1 0%, #ffffff 100%);
+}
+
+.profile-border {
+    border: 8px solid white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.icon-btn {
+    transition: transform 0.2s ease;
+}
+
+.icon-btn:hover {
+    transform: translateY(-3px);
+}
+
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    gap: 1rem;
+}
+
+.contact-grid a {
+    flex: 1 1 0;
+}
+
+.section-title {
+    border-bottom: 2px solid #a78bfa;
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+/* Desktop layout */
+@media (min-width: 768px) {
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        justify-items: center;
+    }
+
+    .contact-grid a {
+        flex: unset;
+        width: 100%;
+    }
+}
