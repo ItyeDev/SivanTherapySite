@@ -33,6 +33,20 @@ body {
     background-color: #f8f9fa;
 }
 
+/* Reflow support - no horizontal scroll at 320px */
+* {
+    box-sizing: border-box;
+}
+
+img, svg {
+    max-width: 100%;
+}
+
+/* Prevent overflow on small screens */
+.contact-grid {
+    overflow-x: hidden;
+}
+
 /* Skip to content link - accessibility */
 .skip-link {
     position: absolute;
