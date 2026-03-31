@@ -258,7 +258,42 @@
 
     <script>
         function saveContact() {
-            window.location.href = 'sivan.vcf';
+            const vCardData = [
+                'BEGIN:VCARD',
+                'VERSION:3.0',
+                'FN:סיון אייל',
+                'ORG:פסיכותרפיה אינטגרטיבית וטיפול באמנות',
+                'TITLE:פסיכותרפיסטית (M.A)',
+                'TEL;TYPE=CELL:050-9981821',
+                'EMAIL:sivan.eyal2@gmail.com',
+                'ADR;TYPE=WORK;;גילון, משגב;;Israel',
+                'END:VCARD'
+            ].join('\r\n');
+
+            const blob = new Blob([vCardData], { type: 'text/vcard' });
+
+            // Web Share API – on Android/iOS opens native share sheet → Contacts app
+            if (navigator.share && navigator.canShare) {
+                const file = new File([blob], 'sivan.vcf', { type: 'text/vcard' });
+                if (navigator.canShare({ files: [file] })) {
+                    navigator.share({ files: [file] }).catch(function(err) {
+                        if (err.name !== 'AbortError') {
+                            window.location.href = 'sivan.vcf';
+                        }
+                    });
+                    return;
+                }
+            }
+
+            // Fallback for desktop browsers
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'sivan.vcf');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
         }
     </script>
 </body>
