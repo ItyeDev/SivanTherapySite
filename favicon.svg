@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Lotus flower for therapy/art site, in site's purple palette -->
+
+  <!-- Bottom leaves -->
+  <ellipse cx="32" cy="52" rx="10" ry="6" fill="#bfaad8" opacity="0.7" transform="rotate(-20 32 52)"/>
+  <ellipse cx="32" cy="52" rx="10" ry="6" fill="#bfaad8" opacity="0.7" transform="rotate(20 32 52)"/>
+
+  <!-- Side petals -->
+  <ellipse cx="18" cy="38" rx="9" ry="14" fill="#c4b5e0" transform="rotate(-30 18 38)"/>
+  <ellipse cx="46" cy="38" rx="9" ry="14" fill="#c4b5e0" transform="rotate(30 46 38)"/>
+
+  <!-- Inner petals -->
+  <ellipse cx="24" cy="34" rx="8" ry="16" fill="#d8c8f0" transform="rotate(-15 24 34)"/>
+  <ellipse cx="40" cy="34" rx="8" ry="16" fill="#d8c8f0" transform="rotate(15 40 34)"/>
+
+  <!-- Center petal -->
+  <ellipse cx="32" cy="30" rx="8" ry="18" fill="#ece0f8"/>
+
+  <!-- Center circle -->
+  <circle cx="32" cy="44" r="5" fill="#6d28d9" opacity="0.8"/>
+</svg>
