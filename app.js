@@ -1,4 +1,4 @@
-const VERSION = '1.0.21';
+const VERSION = '1.0.22';
 
 document.getElementById('site-version').textContent = 'v' + VERSION;
 
@@ -42,4 +42,12 @@ function saveContact() {
 
     // Fallback for desktop browsers
     downloadFallback();
+}
+
+function openMap(query) {
+    var isAndroidOrIOS = /android|iphone|ipad|ipod/i.test(navigator.userAgent);
+    var url = isAndroidOrIOS
+        ? 'geo:0,0?q=' + encodeURIComponent(query)
+        : 'https://maps.google.com/maps?q=' + encodeURIComponent(query);
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
