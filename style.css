@@ -132,6 +132,36 @@ textarea:focus-visible {
     line-height: 1.5;
 }
 
+@media (max-width: 767px) {
+    .mobile-collapse-ready .faq-toggle {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        text-align: right;
+        min-height: 44px;
+    }
+
+    .mobile-collapse-ready .faq-toggle::after {
+        content: '+';
+        font-size: 1.25rem;
+        flex-shrink: 0;
+    }
+
+    .mobile-collapse-ready .faq-toggle[aria-expanded="true"]::after {
+        content: '−';
+    }
+
+    .mobile-collapse-ready .faq-list dt:has(.faq-toggle[aria-expanded="false"]) + dd {
+        display: none;
+    }
+}
+
+.faq-toggle {
+    text-align: right;
+}
+
 /* Desktop layout */
 @media (min-width: 768px) {
     .contact-grid {

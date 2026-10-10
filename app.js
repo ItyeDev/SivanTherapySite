@@ -1,6 +1,28 @@
-const VERSION = '1.0.33';
+const VERSION = '1.0.34';
 
 document.getElementById('site-version').textContent = 'v' + VERSION;
+
+document.documentElement.classList.add('mobile-collapse-ready');
+
+const mobileView = window.matchMedia('(max-width: 767px)');
+const faqToggles = document.querySelectorAll('.faq-toggle');
+
+function syncFaqView() {
+    faqToggles.forEach(function(button) {
+        button.setAttribute('aria-expanded', String(!mobileView.matches));
+        button.disabled = !mobileView.matches;
+        button.tabIndex = mobileView.matches ? 0 : -1;
+    });
+}
+
+faqToggles.forEach(function(button) {
+    button.addEventListener('click', function() {
+        if (!mobileView.matches) return;
+        button.setAttribute('aria-expanded', String(button.getAttribute('aria-expanded') !== 'true'));
+    });
+});
+syncFaqView();
+mobileView.addEventListener('change', syncFaqView);
 
 function saveContact() {
     const vCardData = [
