@@ -134,7 +134,8 @@ textarea:focus-visible {
 }
 
 @media (max-width: 767px) {
-    .mobile-collapse-ready .faq-toggle {
+    .mobile-collapse-ready .faq-toggle,
+    .mobile-collapse-ready .tool-toggle {
         display: flex;
         width: 100%;
         align-items: center;
@@ -144,14 +145,29 @@ textarea:focus-visible {
         min-height: 44px;
     }
 
-    .mobile-collapse-ready .faq-toggle::after {
+    .mobile-collapse-ready .faq-toggle::after,
+    .mobile-collapse-ready .tool-toggle::after {
         content: '+';
         font-size: 1.25rem;
         flex-shrink: 0;
     }
 
-    .mobile-collapse-ready .faq-toggle[aria-expanded="true"]::after {
+    .mobile-collapse-ready .faq-toggle[aria-expanded="true"]::after,
+    .mobile-collapse-ready .tool-toggle[aria-expanded="true"]::after {
         content: '−';
+    }
+
+    .mobile-collapse-ready h3:has(.tool-toggle[aria-expanded="false"]) + span {
+        display: none;
+    }
+
+    .mobile-collapse-ready div:has(> h3 > .tool-toggle[aria-expanded="false"]) {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .mobile-collapse-ready h3:has(.tool-toggle[aria-expanded="false"]) {
+        margin-bottom: 0;
     }
 
     .mobile-collapse-ready .faq-list dt:has(.faq-toggle[aria-expanded="false"]) + dd {
@@ -159,7 +175,8 @@ textarea:focus-visible {
     }
 }
 
-.faq-toggle {
+.faq-toggle,
+.tool-toggle {
     text-align: right;
 }
 

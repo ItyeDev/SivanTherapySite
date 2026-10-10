@@ -1,28 +1,28 @@
-const VERSION = '1.0.35';
+const VERSION = '1.0.36';
 
 document.getElementById('site-version').textContent = 'v' + VERSION;
 
 document.documentElement.classList.add('mobile-collapse-ready');
 
 const mobileView = window.matchMedia('(max-width: 767px)');
-const faqToggles = document.querySelectorAll('.faq-toggle');
+const mobileToggles = document.querySelectorAll('.faq-toggle, .tool-toggle');
 
-function syncFaqView() {
-    faqToggles.forEach(function(button) {
+function syncMobileView() {
+    mobileToggles.forEach(function(button) {
         button.setAttribute('aria-expanded', String(!mobileView.matches));
         button.disabled = !mobileView.matches;
         button.tabIndex = mobileView.matches ? 0 : -1;
     });
 }
 
-faqToggles.forEach(function(button) {
+mobileToggles.forEach(function(button) {
     button.addEventListener('click', function() {
         if (!mobileView.matches) return;
         button.setAttribute('aria-expanded', String(button.getAttribute('aria-expanded') !== 'true'));
     });
 });
-syncFaqView();
-mobileView.addEventListener('change', syncFaqView);
+syncMobileView();
+mobileView.addEventListener('change', syncMobileView);
 
 function saveContact() {
     const vCardData = [
