@@ -1,4 +1,4 @@
-const VERSION = '1.0.40';
+const VERSION = '1.0.41';
 const LAST_UPDATED = '10.10.2026 22:51';
 
 document.getElementById('site-version').textContent = `v${VERSION} | עודכן: ${LAST_UPDATED}`;
@@ -25,17 +25,18 @@ mobileToggles.forEach(function(button) {
 syncMobileView();
 mobileView.addEventListener('change', syncMobileView);
 
-function sendAdsConversion(action, callback) {
+function sendAdsConversion(action) {
     const settings = window.adsConversions;
     const sendTo = settings?.sendTo[action];
-    if (!/^AW-\d+$/.test(settings?.id) || !sendTo?.startsWith(settings.id + '/') || sendTo.includes('REPLACE_')) {
+    if (typeof gtag !== 'function' || !/^AW-\d+$/.test(settings?.id) || !sendTo?.startsWith(settings.id + '/') ||
+        sendTo.includes('REPLACE_') || sendTo.endsWith('_LABEL_HERE')) {
         return false;
     }
 
     const parameters = { send_to: sendTo };
-    if (callback) {
-        parameters.event_callback = callback;
-        parameters.event_timeout = 1500;
+    if (action === 'whatsapp' || action === 'call') {
+        parameters.event_category = 'Contact';
+        parameters.event_label = action === 'whatsapp' ? 'WhatsApp Click' : 'Phone Call Click';
     }
     gtag('event', 'conversion', parameters);
     return true;
@@ -43,7 +44,7 @@ function sendAdsConversion(action, callback) {
 
 function sendAdsActionEvent(action, callback) {
     const settings = window.adsConversions;
-    if (!/^AW-\d+$/.test(settings?.id)) return false;
+    if (typeof gtag !== 'function' || !/^AW-\d+$/.test(settings?.id)) return false;
 
     const events = {
         form: { name: 'generate_lead', category: 'Contact', label: 'Contact Form Submit' },
@@ -69,19 +70,8 @@ document.addEventListener('click', function(event) {
     if (!link) return;
 
     if (link.protocol === 'tel:') {
-        let navigated = false;
-        const navigate = function() {
-            if (navigated) return;
-            navigated = true;
-            window.location.href = link.href;
-        };
-        const conversionSent = sendAdsConversion('call', navigate);
-        if (sendAdsActionEvent('call', conversionSent ? null : navigate)) {
-            event.preventDefault();
-            setTimeout(navigate, 1600);
-        }
+        sendAdsConversion('call');
     } else if (['wa.me', 'api.whatsapp.com'].includes(link.hostname.toLowerCase())) {
-        sendAdsActionEvent('whatsapp');
         sendAdsConversion('whatsapp');
     }
 });
@@ -95,6 +85,7 @@ contactForm.addEventListener('submit', async function(event) {
     const endpoint = new URL(contactForm.action);
     endpoint.pathname = '/ajax' + endpoint.pathname;
     submitButton.disabled = true;
+    status.classList.remove('is-success');
     status.textContent = 'שולחת הודעה...';
 
     try {
@@ -110,6 +101,7 @@ contactForm.addEventListener('submit', async function(event) {
         sendAdsActionEvent('form');
         sendAdsConversion('form');
         contactForm.reset();
+        status.classList.add('is-success');
         status.textContent = 'ההודעה נשלחה בהצלחה. אחזור אליכם בהקדם.';
     } catch (error) {
         status.textContent = 'לא הצלחנו לשלוח את ההודעה. אפשר לנסות שוב או לפנות בטלפון או בוואטסאפ.';

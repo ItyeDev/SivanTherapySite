@@ -47,6 +47,16 @@ img, svg {
     overflow-x: hidden;
 }
 
+.contact-form [role="status"].is-success {
+    color: #166534 !important;
+    background-color: #ecfdf5;
+    border: 1px solid #86efac;
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
 /* Skip to content link - accessibility */
 .skip-link {
     position: absolute;
@@ -266,6 +276,12 @@ textarea:focus-visible {
         background-color: #1e1b2e !important;
         border-color: #6d28d9 !important;
         color: #e2e8f0 !important;
+    }
+
+    .contact-form [role="status"].is-success {
+        color: #bbf7d0 !important;
+        background-color: #123d31;
+        border-color: #166534;
     }
 
     /* Icon buttons */
