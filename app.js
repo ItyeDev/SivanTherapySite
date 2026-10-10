@@ -1,4 +1,4 @@
-const VERSION = '1.0.22';
+const VERSION = '1.0.23';
 
 document.getElementById('site-version').textContent = 'v' + VERSION;
 

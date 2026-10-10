@@ -66,7 +66,9 @@ img, svg {
 
 /* Focus styles - accessibility */
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
     outline: 3px solid #6d28d9;
     outline-offset: 3px;
     border-radius: 4px;
@@ -107,6 +109,36 @@ button:focus-visible {
     margin-bottom: 1rem;
     font-weight: 700;
     font-size: 1.25rem;
+}
+
+.contact-invitation {
+    max-width: 28rem;
+    margin: 0 auto 2rem;
+    color: #374151;
+}
+
+.contact-invitation::before {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 2px;
+    margin: 0 auto 1rem;
+    background-color: #a78bfa;
+}
+
+.contact-invitation-lead {
+    display: block;
+    font-family: 'ComixNo2', 'Assistant', sans-serif;
+    font-size: 1.65rem;
+    line-height: 1.4;
+    color: #5b21b6;
+}
+
+.contact-invitation-followup {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
 }
 
 /* Desktop layout */
@@ -169,6 +201,13 @@ button:focus-visible {
         border-bottom-color: #7c3aed;
     }
 
+    .contact-invitation {
+        color: #cbd5e1;
+    }
+    .contact-invitation-lead {
+        color: #c4b5fd;
+    }
+
     /* Specialties box */
     .bg-purple-50 {
         background-color: rgba(109, 40, 217, 0.15) !important;
@@ -181,6 +220,13 @@ button:focus-visible {
     .bg-white.border.border-purple-100 {
         background-color: #1e1b2e !important;
         border-color: #4c1d95 !important;
+    }
+
+    .contact-form input:not([type="checkbox"]),
+    .contact-form textarea {
+        background-color: #1e1b2e !important;
+        border-color: #6d28d9 !important;
+        color: #e2e8f0 !important;
     }
 
     /* Icon buttons */
@@ -208,7 +254,9 @@ button:focus-visible {
 
     /* Focus outline */
     a:focus-visible,
-    button:focus-visible {
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
         outline-color: #a78bfa;
     }
 }
