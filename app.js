@@ -1,6 +1,7 @@
-const VERSION = '1.0.39';
+const VERSION = '1.0.40';
+const LAST_UPDATED = '10.10.2026 22:51';
 
-document.getElementById('site-version').textContent = 'v' + VERSION;
+document.getElementById('site-version').textContent = `v${VERSION} | עודכן: ${LAST_UPDATED}`;
 
 document.documentElement.classList.add('mobile-collapse-ready');
 
