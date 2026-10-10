@@ -1,7 +1,18 @@
-const VERSION = '1.0.42';
+const VERSION = '1.0.43';
 const LAST_UPDATED = '10.10.2026 22:51';
 
-document.getElementById('site-version').textContent = `v${VERSION} | עודכן: ${LAST_UPDATED}`;
+const versionDisplay = document.getElementById('site-version');
+versionDisplay.textContent = `v${VERSION} | עודכן: ${LAST_UPDATED}`;
+if (location.protocol !== 'file:') {
+    fetch('site-update.json', { cache: 'no-store' })
+        .then(response => response.ok ? response.json() : null)
+        .then(update => {
+            if (update?.updatedAt) {
+                versionDisplay.textContent = `v${VERSION} | עודכן: ${update.updatedAt}`;
+            }
+        })
+        .catch(() => {});
+}
 
 document.documentElement.classList.add('mobile-collapse-ready');
 
