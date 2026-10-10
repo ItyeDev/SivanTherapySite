@@ -84,6 +84,16 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-QNL32QFB8L');
+            gtag('config', 'AW-18046786648');
+            // Replace each send_to label with its Google Ads conversion label.
+            window.adsConversions = {
+                id: 'AW-18046786648',
+                sendTo: {
+                    form: 'AW-18046786648/REPLACE_FORM_LABEL',
+                    whatsapp: 'AW-18046786648/REPLACE_WHATSAPP_LABEL',
+                    call: 'AW-18046786648/REPLACE_CALL_LABEL'
+                }
+            };
     </script>
 </head>
 <body class="text-gray-800 antialiased">
@@ -397,7 +407,8 @@
                             <textarea id="contact-message" name="message" required maxlength="500" rows="3" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white text-gray-800"></textarea>
                             <p class="text-gray-500 text-xs mt-1">נא לא לכלול פרטים רפואיים או מידע אישי רגיש.</p>
                         </div>
-                        <button type="submit" class="block w-fit mx-auto border border-purple-300 text-purple-700 hover:bg-purple-50 font-semibold py-2.5 px-6 rounded-md transition-colors text-sm">שליחת הודעה</button>
+                        <button type="submit" class="block w-fit mx-auto border border-purple-300 text-purple-700 hover:bg-purple-50 font-semibold py-2.5 px-6 rounded-md transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed">שליחת הודעה</button>
+                        <p role="status" aria-live="polite" class="text-sm text-gray-700"></p>
                     </form>
 
                     <!-- Clinic Addresses -->
