@@ -1,4 +1,4 @@
-const VERSION = '1.0.41';
+const VERSION = '1.0.42';
 const LAST_UPDATED = '10.10.2026 22:51';
 
 document.getElementById('site-version').textContent = `v${VERSION} | עודכן: ${LAST_UPDATED}`;
