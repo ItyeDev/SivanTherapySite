@@ -112,16 +112,17 @@ textarea:focus-visible {
 }
 
 .contact-invitation {
-    max-width: 28rem;
+    max-width: 64rem;
     margin: 0 auto 2rem;
     color: #374151;
 }
 
 .contact-invitation-lead {
     display: block;
-    font-family: 'ComixNo2', 'Assistant', sans-serif;
-    font-size: 1.65rem;
-    line-height: 1.4;
+    font-family: 'DanaYad', 'Assistant', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.625;
     color: #5b21b6;
 }
 
