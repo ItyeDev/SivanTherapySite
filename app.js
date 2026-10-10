@@ -1,4 +1,4 @@
-const VERSION = '1.0.43';
+const VERSION = '1.0.44';
 const LAST_UPDATED = '10.10.2026 22:51';
 
 const versionDisplay = document.getElementById('site-version');
